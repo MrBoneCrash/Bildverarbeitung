@@ -78,7 +78,7 @@ Die Bildverarbeitung umfasst mehrere Schritte:
 
 ### **5. Klausurrelevante Beispiele**
 1. **Histogramm einer Grauwerte-Bildmatrix erstellen**:
-   - Gegeben: Bildmatrix \( $\begin{bmatrix} 0 & 1 & 2 \\ 2 & 1 & 0 \\ 0 & 1 & 2 \end{bmatrix}$ \).
+   - Gegeben: Bildmatrix \( \begin{bmatrix} 0 & 1 & 2 \\ 2 & 1 & 0 \\ 0 & 1 & 2 \end{bmatrix} \).
    - Berechnung:
      - Grauwerte: \( $[0, 1, 2]$ \).
      - Häufigkeit: \( $[3, 3, 3]$ \).
@@ -441,18 +441,14 @@ Die Bildverarbeitung umfasst mehrere Schritte:
   - Die Radon-Transformation projiziert ein 2D-Bild entlang bestimmter Winkel auf eine 1D-Achse. 
   - Anwendung: Grundlagen der Computertomographie (CT).
 - **Mathematische Darstellung**:
-  $$
-  \mathcal{R}f(\theta, r) = \int_{-\infty}^\infty \int_{-\infty}^\infty f(x, y) \delta(x \cos\theta + y \sin\theta - r) dx dy
-  $$
+  $$\mathcal{R}f(\theta, r) = \int_{-\infty}^\infty \int_{-\infty}^\infty f(x, y) \delta(x \cos\theta + y \sin\theta - r) dx dy$$
   - \( $\delta$ \): Dirac-Delta-Funktion.
   - \( $\theta$ \): Winkel der Projektion.
   - \( $r$ \): Abstand von der Projektionsebene.
 
 - **Wichtige Eigenschaft**:
   - Die Radon-Transformation ist eng mit der Fourier-Transformation durch den **Fourier-Slice-Theorem** verbunden:
-    $$
-    F(\omega, \phi) = \mathcal{F}[\mathcal{R}f(\phi, r)](\omega)
-    $$
+    $$F(\omega, \phi) = \mathcal{F}[\mathcal{R}f(\phi, r)](\omega)$$
     - Die 1D-Fourier-Transformation der Projektion entspricht einem Schnitt durch die 2D-Fourier-Transformation des Originalbildes.
 
 ---
@@ -462,9 +458,7 @@ Die Bildverarbeitung umfasst mehrere Schritte:
   - Methode zur Erkennung geometrischer Formen (z. B. Linien, Kreise) durch Parametrisierung.
 - **Linienerkennung**:
   - Darstellung einer Linie im Parameterraum:
-    $$
-    \rho = x \cos\theta + y \sin\theta
-    $$
+    $$\rho = x \cos\theta + y \sin\theta $$
     - \( $\rho$ \): Abstand von der Linie zum Ursprung.
     - \( $\theta$ \): Winkel zwischen der Linie und der x-Achse.
 
@@ -490,9 +484,7 @@ Die Bildverarbeitung umfasst mehrere Schritte:
 - **Definition**:
   - Methode zur Rekonstruktion eines Bildes aus seinen Projektionen.
 - **Mathematische Darstellung**:
-  $$
-  f(x, y) = \int_0^\pi \mathcal{R}f(\theta, r) \, d\theta
-  $$
+  $$f(x, y) = \int_0^\pi \mathcal{R}f(\theta, r) \, d\theta$$
   - Problem: Erzeugt verschwommene Rekonstruktionen aufgrund ungleichmäßiger Gewichtung.
 
 ---
@@ -503,9 +495,7 @@ Die Bildverarbeitung umfasst mehrere Schritte:
 - **Ablauf**:
   1. Fourier-Transformation der Projektionen.
   2. Multiplikation mit einem Frequenzfilter (z. B. Ram-Lak-Filter):
-     $$
-     H(\omega) = |\omega|
-     $$
+     $$H(\omega) = |\omega|$$
   3. Rücktransformation in den Ortsraum.
   4. Anwendung der Rückprojektion.
 
@@ -518,9 +508,7 @@ Die Bildverarbeitung umfasst mehrere Schritte:
 - **Vorteile**:
   - Funktioniert auch bei verrauschten oder unvollständigen Daten.
 - **Formel (Iterative Methode)**:
-  $$
-  f^{(k+1)} = f^{(k)} + \lambda \cdot \frac{p_i - \sum_j a_{ij} f_j}{\sum_j a_{ij}^2} a_{ij}
-  $$
+  $$f^{(k+1)} = f^{(k)} + \lambda \cdot \frac{p_i - \sum_j a_{ij} f_j}{\sum_j a_{ij}^2} a_{ij}$$
   - \( $f^{(k)}$ \): Rekonstruktionswert der \( $k$ \)-ten Iteration.
   - \( $p_i$ \): Messwert der \( $i$ \)-ten Projektion.
   - \( $a_{ij}$ \): Gewichtungsfaktoren.
@@ -530,13 +518,9 @@ Die Bildverarbeitung umfasst mehrere Schritte:
 ### **3. Polar-Koordinaten-System**
 - **Koordinatenumwandlungen**:
   - Von kartesischen zu polaren Koordinaten:
-    $$
-    r = \sqrt{x^2 + y^2}, \quad \theta = \tan^{-1}\left(\frac{y}{x}\right)
-    $$
+    $$r = \sqrt{x^2 + y^2}, \quad \theta = \tan^{-1}\left(\frac{y}{x}\right)$$
   - Von polaren zu kartesischen Koordinaten:
-    $$
-    x = r \cos\theta, \quad y = r \sin\theta
-    $$
+    $$x = r \cos\theta, \quad y = r \sin\theta$$
 
 ---
 
@@ -544,9 +528,7 @@ Die Bildverarbeitung umfasst mehrere Schritte:
 - **Eigenschaften**:
   - \( $\delta(x) = 0$ \) für \( $x \neq 0$ \), \( $\int_{-\infty}^\infty \delta(x) dx = 1$ \).
   - Sifting-Eigenschaft:
-    $$
-    \int_{-\infty}^\infty f(x) \delta(x - x_0) dx = f(x_0)
-    $$
+    $$\int_{-\infty}^\infty f(x) \delta(x - x_0) dx = f(x_0)$$
 
 ---
 
@@ -563,9 +545,7 @@ Die Bildverarbeitung umfasst mehrere Schritte:
 - **Gegeben**: Werte \( $f(1, 1) = 10$ \), \( $f(2, 1) = 20$ \), \( $f(1, 2) = 30$ \), \( $f(2, 2) = 40$ \).
 - **Frage**: Bestimme \( $f(1.5, 1.5)$ \).
 - **Lösung**:
-  $$
-  f(1.5, 1.5) = 0.25 \cdot 10 + 0.25 \cdot 20 + 0.25 \cdot 30 + 0.25 \cdot 40 = 25
-  $$
+  $$f(1.5, 1.5) = 0.25 \cdot 10 + 0.25 \cdot 20 + 0.25 \cdot 30 + 0.25 \cdot 40 = 25$$
 
 ---
 
@@ -620,23 +600,17 @@ Die Bildverarbeitung umfasst mehrere Schritte:
 ### **2. Wichtige Maße**
 1. **Kompressionsverhältnis**:
    - Gibt an, wie stark die Daten reduziert wurden:
-     $$
-     C = \frac{b}{b'}
-     $$
+     $$C = \frac{b}{b'}$$
      - $b$: Anzahl der Bits vor der Kompression.
      - $b'$: Anzahl der Bits nach der Kompression.
 
 2. **Redundanz**:
    - Anteil der entfernten Daten:
-     $$
-     R = 1 - \frac{1}{C} = 1 - \frac{b'}{b}
-     $$
+     $$R = 1 - \frac{1}{C} = 1 - \frac{b'}{b}$$
 
 3. **Entropie**:
    - Durchschnittliche Informationsmenge pro Symbol:
-     $$
-     H = -\sum_{i=1}^n p(a_i) \log_2 p(a_i)
-     $$
+     $$H = -\sum_{i=1}^n p(a_i) \log_2 p(a_i)$$
      - $p(a_i)$: Wahrscheinlichkeit des Symbols $a_i$.
 
 ---
@@ -687,9 +661,7 @@ Die Bildverarbeitung umfasst mehrere Schritte:
   - Wandelt das Bild von der Ortsdomäne in die Frequenzdomäne um.
   - Häufig verwendete Transformation in JPEG.
 - **Formel**:
-  $$
-  F(u, v) = \frac{1}{4} \sum_{x=0}^{N-1} \sum_{y=0}^{N-1} f(x, y) \cos\left[\frac{\pi (2x+1)u}{2N}\right] \cos\left[\frac{\pi (2y+1)v}{2N}\right]
-  $$
+  $$F(u, v) = \frac{1}{4} \sum_{x=0}^{N-1} \sum_{y=0}^{N-1} f(x, y) \cos\left[\frac{\pi (2x+1)u}{2N}\right] \cos\left[\frac{\pi (2y+1)v}{2N}\right]$$
   - $f(x, y)$: Intensitätswert bei $(x, y)$.
   - $F(u, v)$: DCT-Koeffizient.
 
@@ -706,9 +678,7 @@ Die Bildverarbeitung umfasst mehrere Schritte:
   - Reduktion der Genauigkeit der DCT-Koeffizienten.
   - Entfernt irrelevante Details.
 - **Formel**:
-  $$
-  Q(u, v) = \text{round}\left(\frac{F(u, v)}{q(u, v)}\right)
-  $$
+  $$Q(u, v) = \text{round}\left(\frac{F(u, v)}{q(u, v)}\right)$$
   - $q(u, v)$: Quantisierungsmatrix.
 
 ---
@@ -742,9 +712,7 @@ Die Bildverarbeitung umfasst mehrere Schritte:
 - **Gegeben**: Originalbildgröße $b = 1 \, \text{MB}$, komprimiertes Bild $b' = 250 \, \text{kB}$.
 - **Frage**: Berechne das Kompressionsverhältnis und die Redundanz.
 - **Lösung**:
-  $$
-  C = \frac{1 \, \text{MB}}{0.25 \, \text{MB}} = 4, \quad R = 1 - \frac{1}{4} = 0.75 = 75\%
-  $$
+  $$C = \frac{1 \, \text{MB}}{0.25 \, \text{MB}} = 4, \quad R = 1 - \frac{1}{4} = 0.75 = 75\%$$
 
 ---
 
@@ -768,11 +736,11 @@ Die Bildverarbeitung umfasst mehrere Schritte:
 ### **1. Definition der Segmentierung**
 - **Segmentierung**: 
   - Prozess der Unterteilung eines Bildes in sinnvolle Regionen (z. B. Objekte, Hintergrund).
-  - Ziel: Regionen \( R_1, R_2, ..., R_n \) definieren, die folgende Kriterien erfüllen:
-    1. \( \bigcup_{i=1}^n R_i = R \) (komplette Abdeckung des Bildbereichs \( R \)).
-    2. \( R_i \cap R_j = \emptyset \) für \( i \neq j \) (Regionen sind disjunkt).
-    3. \( Q(R_i) = \text{True} \) für jedes \( R_i \) (jedes Segment erfüllt ein Merkmal \( Q \)).
-    4. \( Q(R_i \cup R_j) = \text{False} \) für angrenzende Regionen \( R_i \) und \( R_j \) (Merkmale unterscheiden sich).
+  - Ziel: Regionen \( $R_1, R_2, ..., R_n$ \) definieren, die folgende Kriterien erfüllen:
+    1. \( $\bigcup_{i=1}^n R_i = R$ \) (komplette Abdeckung des Bildbereichs \( R \)).
+    2. \( $R_i \cap R_j = \emptyset$ \) für \( $i \neq j$ \) (Regionen sind disjunkt).
+    3. \( $Q(R_i) = \text{True}$ \) für jedes \( $R_i$ \) (jedes Segment erfüllt ein Merkmal \( Q \)).
+    4. \( $Q(R_i \cup R_j) = \text{False}$ \) für angrenzende Regionen \( $R_i$ \) und \( $R_j$ \) (Merkmale unterscheiden sich).
 
 ---
 
@@ -784,13 +752,11 @@ Die Bildverarbeitung umfasst mehrere Schritte:
 - **Globale Schwelle**:
   - Eine einzige Schwelle \( T \) wird für das gesamte Bild verwendet.
   - Formel:
-    $$
-    g(x, y) = 
+    $$g(x, y) = 
     \begin{cases} 
       1 & \text{wenn } f(x, y) \geq T \\
       0 & \text{sonst} 
-    \end{cases}
-    $$
+    \end{cases}$$
 - **Otsu-Algorithmus**:
   - Automatische Berechnung der optimalen Schwelle \( T \), indem die Varianz zwischen den Klassen maximiert wird.
 
@@ -799,11 +765,9 @@ Die Bildverarbeitung umfasst mehrere Schritte:
   - Kanten werden durch Gradientenänderungen im Bild erkannt.
 - **Sobel-Operator**:
   - Gradientenberechnung:
-    $$
-    \nabla f = \sqrt{g_x^2 + g_y^2}
-    $$
-    - \( g_x \): Gradient in x-Richtung.
-    - \( g_y \): Gradient in y-Richtung.
+    $$\nabla f = \sqrt{g_x^2 + g_y^2}$$
+    - \( $g_x$ \): Gradient in x-Richtung.
+    - \( $g_y$ \): Gradient in y-Richtung.
 - **Kantenerkennung**:
   - Bildbereiche mit hohen Gradientenwerten markieren Kanten.
 
@@ -822,28 +786,20 @@ Die Bildverarbeitung umfasst mehrere Schritte:
   1. **Erosion**:
      - Entfernt Pixel an den Rändern von Objekten.
      - Formel:
-       $$
-       A \ominus B = \{ z \mid B_z \subseteq A \}
-       $$
+       $$A \ominus B = \{ z \mid B_z \subseteq A \}$$
        - \( A \): Eingabeobjekt.
        - \( B \): Strukturelement.
   2. **Dilatation**:
      - Fügt Pixel zu den Rändern von Objekten hinzu.
      - Formel:
-       $$
-       A \oplus B = \{ z \mid (B^z \cap A) \neq \emptyset \}
-       $$
+       $$A \oplus B = \{ z \mid (B^z \cap A) \neq \emptyset \}$$
        - \( B^z \): Reflektiertes Strukturelement.
   3. **Öffnung**:
      - Glättet Objektgrenzen, entfernt kleine Objekte:
-       $$
-       A \circ B = (A \ominus B) \oplus B
-       $$
+       $$A \circ B = (A \ominus B) \oplus B$$
   4. **Schließung**:
      - Füllt kleine Lücken in Objekten:
-       $$
-       A \cdot B = (A \oplus B) \ominus B
-       $$
+       $$A \cdot B = (A \oplus B) \ominus B$$
 
 ---
 
@@ -853,36 +809,28 @@ Die Bildverarbeitung umfasst mehrere Schritte:
 - Definition:
   - Extraktion der äußeren Grenze eines Objekts.
 - Formel:
-  $$
-  \text{Boundary}(A) = A - (A \ominus B)
-  $$
+  $$\text{Boundary}(A) = A - (A \ominus B)$$
 
 #### **4.2 Hit-or-Miss-Transformation**
 - **Definition**:
   - Erkennt spezifische Formen in binären Bildern.
 - **Formel**:
-  $$
-  I \odot B = (A \ominus B_1) \cap (A^c \ominus B_2)
-  $$
+  $$I \odot B = (A \ominus B_1) \cap (A^c \ominus B_2)$$
   - \( B_1, B_2 \): Strukturelemente.
 
 #### **4.3 Lochfüllung**
 - **Definition**:
   - Füllt Löcher in Objekten, ohne die äußeren Grenzen zu durchbrechen.
 - **Iterativer Algorithmus**:
-  $$
-  X_k = (X_{k-1} \oplus B) \cap I^c
-  $$
-  - \( X_0 \): Startpunkt (ein Pixel im Loch).
-  - \( I^c \): Komplement des Eingabebildes.
+  $$X_k = (X_{k-1} \oplus B) \cap I^c$$
+  - \( $X_0$ \): Startpunkt (ein Pixel im Loch).
+  - \( $I^c$ \): Komplement des Eingabebildes.
 
 #### **4.4 Thinning (Dünnung)**
 - **Definition**:
   - Reduziert Objekte zu einer einpixelbreiten Linie.
 - **Formel**:
-  $$
-  A \odot B = A \cap (A \oplus B)^c
-  $$
+  $$A \odot B = A \cap (A \oplus B)^c$$
 
 ---
 
@@ -912,9 +860,7 @@ Die Bildverarbeitung umfasst mehrere Schritte:
 - **Lösung**:
   1. Wende die Sobel-Filter $G_x$ und $G_y$ an.
   2. Berechne:
-     $$
-     \nabla f = \sqrt{G_x^2 + G_y^2}
-     $$
+     $$\nabla f = \sqrt{G_x^2 + G_y^2}$$
 
 ---
 
@@ -963,10 +909,8 @@ Die Bildverarbeitung umfasst mehrere Schritte:
 ### **3. Merkmalsbeschreibung**
 - **Feature-Vektoren**:
   - Eine Menge von Merkmalen wird in einem $n$-dimensionalen Vektor zusammengefasst:
-    $$
-    \mathbf{x} = \begin{bmatrix} x_1 \\ x_2 \\ \vdots \\ x_n \end{bmatrix}
-    $$
-    - Beispiel: Farbwerte $ \mathbf{x} = \begin{bmatrix} r \\ g \\ b \end{bmatrix} $.
+    $$\mathbf{x} = \begin{bmatrix} x_1 \\ x_2 \\ \vdots \\ x_n \end{bmatrix}$$
+    - Beispiel: Farbwerte $\mathbf{x} = \begin{bmatrix} r \\ g \\ b \end{bmatrix}$.
 
 - **Invarianz**:
   - Merkmalsbeschreibungen sollten robust gegen Änderungen wie Translation, Rotation oder Skalierung sein.
@@ -977,9 +921,7 @@ Die Bildverarbeitung umfasst mehrere Schritte:
 
 #### **4.1 Sobel-Operator**:
 - Gradientenberechnung zur Erkennung von Kanten:
-  $$
-  \nabla f = \sqrt{G_x^2 + G_y^2}
-  $$
+  $$\nabla f = \sqrt{G_x^2 + G_y^2}$$
   - $G_x, G_y$: Gradienten in $x$- und $y$-Richtung.
 
 #### **4.2 Canny-Algorithmus**:
@@ -995,29 +937,21 @@ Die Bildverarbeitung umfasst mehrere Schritte:
 #### **5.1 Grundlegende Formmerkmale**
 1. **Kompaktheit**:
    - Verhältnis von Fläche zu Umfang:
-     $$
-     C = \frac{p^2}{A}
-     $$
+     $$C = \frac{p^2}{A}$$
      - $p$: Umfang, $A$: Fläche.
 
 2. **Kreisförmigkeit**:
    - Verhältnis der Fläche eines Objekts zu einem Kreis mit gleichem Umfang:
-     $$
-     \text{Circularity} = \frac{4\pi A}{p^2}
-     $$
+     $$\text{Circularity} = \frac{4\pi A}{p^2}$$
 
 3. **Exzentrizität**:
    - Verhältnis der Hauptachsen eines Ellipsoids:
-     $$
-     \text{Eccentricity} = \frac{\sqrt{a^2 - b^2}}{a}
-     $$
+     $$\text{Eccentricity} = \frac{\sqrt{a^2 - b^2}}{a}$$
      - $a, b$: Längen der Haupt- und Nebenachsen.
 
 #### **5.2 Fourier-Beschreibung von Formen**
 - Kontur wird durch Fourier-Koeffizienten beschrieben:
-  $$
-  s(k) = x(k) + iy(k)
-  $$
+  $$s(k) = x(k) + iy(k)$$
   - $x(k), y(k)$: Punkte auf der Kontur.
 
 ---
@@ -1029,34 +963,22 @@ Die Bildverarbeitung umfasst mehrere Schritte:
 #### **6.1 Statistische Momente**:
 - Maße für Verteilungen von Grau- oder Farbwerten.
   1. **Varianz (Kontrast)**:
-     $$
-     \mu_2 = \sum_i (z_i - m)^2 p(z_i)
-     $$
+     $$\mu_2 = \sum_i (z_i - m)^2 p(z_i)$$
      - $m$: Mittelwert.
   2. **Schiefe (Skewness)**:
-     $$
-     \mu_3 = \sum_i (z_i - m)^3 p(z_i)
-     $$
+     $$\mu_3 = \sum_i (z_i - m)^3 p(z_i)$$
   3. **Wölbung (Kurtosis)**:
-     $$
-     \mu_4 = \sum_i (z_i - m)^4 p(z_i)
-     $$
+     $$\mu_4 = \sum_i (z_i - m)^4 p(z_i)$$
 
 #### **6.2 Co-Occurrence-Matrix**:
 - Beschreibt Häufigkeit von Pixelpaaren mit spezifischen Intensitäten:
-  $$
-  G(i, j) = \text{Anzahl der Pixelpaare mit } I(i) \text{ und } I(j)
-  $$
+  $$G(i, j) = \text{Anzahl der Pixelpaare mit } I(i) \text{ und } I(j)$$
 
 - **Texturmetriken**:
   - Kontrast:
-    $$
-    \text{Contrast} = \sum_{i,j} (i - j)^2 G(i, j)
-    $$
+    $$\text{Contrast} = \sum_{i,j} (i - j)^2 G(i, j)$$
   - Homogenität:
-    $$
-    \text{Homogeneity} = \sum_{i,j} \frac{G(i, j)}{1 + |i - j|}
-    $$
+    $$\text{Homogeneity} = \sum_{i,j} \frac{G(i, j)}{1 + |i - j|}$$
 
 ---
 
@@ -1067,9 +989,7 @@ Die Bildverarbeitung umfasst mehrere Schritte:
   - Reduktion der Dimensionalität eines Merkmalsraums, basierend auf Hauptachsen (Eigenvektoren) der Kovarianzmatrix.
 - **Algorithmus**:
   1. Berechne die Kovarianzmatrix:
-     $$
-     C = \frac{1}{n-1} \sum_{i=1}^n (\mathbf{x}_i - \overline{\mathbf{x}})(\mathbf{x}_i - \overline{\mathbf{x}})^T
-     $$
+     $$C = \frac{1}{n-1} \sum_{i=1}^n (\mathbf{x}_i - \overline{\mathbf{x}})(\mathbf{x}_i - \overline{\mathbf{x}})^T$$
   2. Bestimme die Eigenvektoren und Eigenwerte.
   3. Wähle die Hauptachsen mit den größten Eigenwerten.
 
@@ -1089,22 +1009,16 @@ Die Bildverarbeitung umfasst mehrere Schritte:
 - **Gegeben**: Ein Objekt mit $p = 20$, $A = 10$.
 - **Frage**: Berechne Kompaktheit und Kreisförmigkeit.
 - **Lösung**:
-  $$
-  C = \frac{20^2}{10} = 40, \quad \text{Circularity} = \frac{4\pi \cdot 10}{20^2} \approx 0.628
-  $$
+  $$C = \frac{20^2}{10} = 40, \quad \text{Circularity} = \frac{4\pi \cdot 10}{20^2} \approx 0.628$$
 
 #### **Beispiel 2: Co-Occurrence-Matrix**
 - **Gegeben**: Intensitätswerte $[0, 1]$.
 - **Frage**: Erstelle die Co-Occurrence-Matrix und berechne den Kontrast.
 - **Lösung**:
   - Matrix:
-    $$
-    G = \begin{bmatrix} 2 & 1 \\ 1 & 3 \end{bmatrix}
-    $$
+    $$G = \begin{bmatrix} 2 & 1 \\ 1 & 3 \end{bmatrix}$$
   - Kontrast:
-    $$
-    \text{Contrast} = (0-1)^2 \cdot 1 + (1-0)^2 \cdot 1 = 2
-    $$
+    $$\text{Contrast} = (0-1)^2 \cdot 1 + (1-0)^2 \cdot 1 = 2$$
 
 #### **Beispiel 3: PCA**
 - **Gegeben**: Datenpunkte in einem 2D-Raum.
